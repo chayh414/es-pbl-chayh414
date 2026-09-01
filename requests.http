@@ -1,0 +1,102 @@
+# 개인 저장소 루트 requests.http. 요청 하나씩 Kibana Dev Tools Console에 복사해서 실행한다.
+
+### V1-T12-P · 개인 index 생성 (최초 생성, GET 존재 확인 생략하고 바로 PUT)
+PUT /vintage-items
+{
+  "settings": { "number_of_shards": 1, "number_of_replicas": 1 },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "item_name": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+      "category": { "type": "keyword" },
+      "brand": { "type": "keyword" },
+      "brand_tier": { "type": "keyword" },
+      "size": { "type": "keyword" },
+      "color": { "type": "keyword" },
+      "condition": { "type": "keyword" },
+      "price": { "type": "integer" },
+      "original_price": { "type": "integer" },
+      "era": { "type": "keyword" },
+      "material": { "type": "keyword" },
+      "platform": { "type": "keyword" },
+      "seller_rating": { "type": "float" },
+      "listed_date": { "type": "date" },
+      "sold": { "type": "boolean" },
+      "description": { "type": "text" },
+      "defects": { "type": "text" }
+    }
+  }
+}
+
+### V1-T12-P · mapping 확인
+GET /vintage-items/_mapping
+
+### V1-T12-P · shard 상태 확인 (primary/replica 배치)
+GET /_cat/shards/vintage-items?v
+
+### V1-T12-P · 대표 문서 3건 색인
+POST /vintage-items/_doc/1
+{
+  "item_name": "리바이스 505 빈티지 데님 자켓",
+  "category": "아우터",
+  "brand": "Levi's",
+  "brand_tier": "일반",
+  "size": "M",
+  "color": "인디고",
+  "condition": "A급",
+  "price": 27000,
+  "original_price": 52000,
+  "era": "90s",
+  "material": "데님",
+  "platform": "번개장터",
+  "seller_rating": 4.6,
+  "listed_date": "2026-08-22",
+  "sold": false,
+  "description": "90년대 리바이스 데님 자켓, 색빠짐 없이 깔끔함",
+  "defects": ""
+}
+
+POST /vintage-items/_doc/2
+{
+  "item_name": "칼하트 더블니 워크팬츠",
+  "category": "하의",
+  "brand": "Carhartt",
+  "brand_tier": "하이엔드스트릿",
+  "size": "32",
+  "color": "카키",
+  "condition": "B급",
+  "price": 28000,
+  "original_price": 65000,
+  "era": "2000s",
+  "material": "캔버스",
+  "platform": "당근마켓",
+  "seller_rating": 4.2,
+  "listed_date": "2026-08-15",
+  "sold": false,
+  "description": "무릎 부분 워싱 자연스러운 빈티지 팬츠",
+  "defects": "무릎 부분 미세한 얼룩 있음, 밑단 보풀 약간"
+}
+
+POST /vintage-items/_doc/3
+{
+  "item_name": "산산기어 도킹 자켓 라임",
+  "category": "아우터",
+  "brand": "SANSAN GEAR",
+  "brand_tier": "하이엔드스트릿",
+  "size": "M",
+  "color": "라임",
+  "condition": "A급",
+  "price": 30000,
+  "original_price": 100000,
+  "era": "2010s",
+  "material": "나일론",
+  "platform": "동묘구제",
+  "seller_rating": 4.5,
+  "listed_date": "2026-08-25",
+  "sold": false,
+  "description": "산산기어 도킹 자켓, 아웃도어 무드에 그래픽 포인트, 착용감 좋음",
+  "defects": ""
+}
+
+### V1-T12-P · 색인 확인
+GET /vintage-items/_search
