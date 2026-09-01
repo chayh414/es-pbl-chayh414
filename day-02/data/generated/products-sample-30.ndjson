@@ -1,0 +1,60 @@
+{"index":{"_index":"products","_id":"P-00001"}}
+{"product_id":"P-00001","name":"Auralis 실속형 기계식 키보드","description":"여행에 잘 어울리는 전자기기 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"전자기기","brand":"Auralis","price":192800,"rating":3.4,"review_count":175,"in_stock":true,"tags":["휴대용","노이즈 캔슬링"],"created_at":"2026-04-19T07:48:16Z","updated_at":"2026-05-09T07:48:16Z"}
+{"index":{"_index":"products","_id":"P-00002"}}
+{"product_id":"P-00002","name":"SimpleDay 데일리 LED 스탠드","description":"선물에 잘 어울리는 생활 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"생활","brand":"SimpleDay","price":194400,"rating":4.8,"review_count":227,"in_stock":true,"tags":["선물","실용"],"created_at":"2025-10-29T16:45:51Z","updated_at":"2025-11-20T16:45:51Z"}
+{"index":{"_index":"products","_id":"P-00003"}}
+{"product_id":"P-00003","name":"Morrow 실속형 오버핏 후드","description":"출근에 잘 어울리는 패션 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"패션","brand":"Morrow","price":27700,"rating":4.3,"review_count":46,"in_stock":false,"tags":["베이직","데일리","사계절"],"created_at":"2026-02-01T14:59:57Z","updated_at":"2026-02-21T14:59:57Z"}
+{"index":{"_index":"products","_id":"P-00004"}}
+{"product_id":"P-00004","name":"PeakRun 스마트 등산 스틱","description":"헬스장에 잘 어울리는 스포츠 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"스포츠","brand":"PeakRun","price":145200,"rating":2.4,"review_count":53,"in_stock":true,"tags":["초보자","운동"],"created_at":"2025-10-26T16:22:07Z","updated_at":"2025-11-14T16:22:07Z"}
+{"index":{"_index":"products","_id":"P-00005"}}
+{"product_id":"P-00005","name":"지식마루 프리미엄 자기계발 도서","description":"휴식에 잘 어울리는 도서 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"도서","brand":"지식마루","price":39600,"rating":2.1,"review_count":406,"in_stock":true,"tags":["입문","ebook","국내도서"],"created_at":"2026-04-03T15:20:28Z","updated_at":"2026-04-20T15:20:28Z"}
+{"index":{"_index":"products","_id":"P-00006"}}
+{"product_id":"P-00006","name":"MildLeaf 프리미엄 세럼","description":"메이크업에 잘 어울리는 뷰티 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"뷰티","brand":"MildLeaf","price":78200,"rating":4.8,"review_count":30,"in_stock":true,"tags":["저자극","보습","기초케어","휴대용"],"created_at":"2026-04-30T05:29:28Z","updated_at":"2026-05-22T05:29:28Z"}
+{"index":{"_index":"products","_id":"P-00007"}}
+{"product_id":"P-00007","name":"달콤상점 데일리 무설탕 간식","description":"간식에 잘 어울리는 식품 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"식품","brand":"달콤상점","price":49600,"rating":2.7,"review_count":24,"in_stock":true,"tags":["건강","국산","간편식"],"created_at":"2025-12-20T20:36:09Z","updated_at":"2025-12-23T20:36:09Z"}
+{"index":{"_index":"products","_id":"P-00008"}}
+{"product_id":"P-00008","name":"HappyTail 컴팩트 산책 리드줄","description":"건강 관리에 잘 어울리는 반려동물 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"반려동물","brand":"HappyTail","price":85100,"rating":4.6,"review_count":38,"in_stock":false,"tags":["정기구매","안전","반려묘"],"created_at":"2026-07-25T03:42:26Z","updated_at":"2026-08-19T03:42:26Z"}
+{"index":{"_index":"products","_id":"P-00009"}}
+{"product_id":"P-00009","name":"NeoTech 데일리 기계식 키보드","description":"온라인 회의에 잘 어울리는 전자기기 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"전자기기","brand":"NeoTech","price":391600,"rating":3.4,"review_count":116,"in_stock":true,"tags":["무선","노이즈 캔슬링","블루투스","USB-C"],"created_at":"2025-10-18T09:57:00Z","updated_at":"2025-11-04T09:57:00Z"}
+{"index":{"_index":"products","_id":"P-00010"}}
+{"product_id":"P-00010","name":"DailyForm 데일리 수납 정리함","description":"주방 정리에 잘 어울리는 생활 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"생활","brand":"DailyForm","price":61100,"rating":3.5,"review_count":338,"in_stock":false,"tags":["친환경","실용","선물","미니멀"],"created_at":"2025-11-13T10:25:16Z","updated_at":"2025-11-16T10:25:16Z"}
+{"index":{"_index":"products","_id":"P-00011"}}
+{"product_id":"P-00011","name":"LoopWear 스마트 니트 가디건","description":"캠퍼스에 잘 어울리는 패션 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"패션","brand":"LoopWear","price":138700,"rating":4.6,"review_count":528,"in_stock":true,"tags":["가벼운 착용감","베이직"],"created_at":"2026-03-15T10:51:19Z","updated_at":"2026-04-07T10:51:19Z"}
+{"index":{"_index":"products","_id":"P-00012"}}
+{"product_id":"P-00012","name":"TrailMove 프리미엄 요가 매트","description":"주말 운동에 잘 어울리는 스포츠 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"스포츠","brand":"TrailMove","price":117700,"rating":3.8,"review_count":321,"in_stock":true,"tags":["운동","경량","초보자"],"created_at":"2025-09-20T18:25:51Z","updated_at":"2025-09-25T18:25:51Z"}
+{"index":{"_index":"products","_id":"P-00013"}}
+{"product_id":"P-00013","name":"북웨이브 스마트 여행 에세이","description":"학습에 잘 어울리는 도서 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"도서","brand":"북웨이브","price":37300,"rating":4.5,"review_count":15,"in_stock":true,"tags":["추천","국내도서"],"created_at":"2026-07-03T17:09:58Z","updated_at":"2026-07-17T17:09:58Z"}
+{"index":{"_index":"products","_id":"P-00014"}}
+{"product_id":"P-00014","name":"SkinNote 컴팩트 세럼","description":"데일리 케어에 잘 어울리는 뷰티 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"뷰티","brand":"SkinNote","price":52200,"rating":2.9,"review_count":108,"in_stock":true,"tags":["기초케어","저자극","보습","비건"],"created_at":"2026-03-26T06:56:10Z","updated_at":"2026-04-24T06:56:10Z"}
+{"index":{"_index":"products","_id":"P-00015"}}
+{"product_id":"P-00015","name":"그레인픽 프리미엄 견과류 세트","description":"간식에 잘 어울리는 식품 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"식품","brand":"그레인픽","price":21000,"rating":2.6,"review_count":117,"in_stock":true,"tags":["국산","선물"],"created_at":"2025-12-21T14:49:16Z","updated_at":"2026-01-04T14:49:16Z"}
+{"index":{"_index":"products","_id":"P-00016"}}
+{"product_id":"P-00016","name":"HappyTail 데일리 고양이 모래","description":"산책에 잘 어울리는 반려동물 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"반려동물","brand":"HappyTail","price":7200,"rating":2.6,"review_count":410,"in_stock":true,"tags":["내구성","안전","반려견","정기구매"],"created_at":"2026-05-01T09:08:09Z","updated_at":"2026-05-08T09:08:09Z"}
+{"index":{"_index":"products","_id":"P-00017"}}
+{"product_id":"P-00017","name":"Auralis 스마트 무선 이어폰","description":"온라인 회의에 잘 어울리는 전자기기 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"전자기기","brand":"Auralis","price":129600,"rating":2.1,"review_count":196,"in_stock":true,"tags":["USB-C","노이즈 캔슬링","휴대용","블루투스"],"created_at":"2026-01-30T05:07:59Z","updated_at":"2026-02-06T05:07:59Z"}
+{"index":{"_index":"products","_id":"P-00018"}}
+{"product_id":"P-00018","name":"DailyForm 실속형 무선 청소기","description":"주방 정리에 잘 어울리는 생활 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"생활","brand":"DailyForm","price":216000,"rating":3.2,"review_count":462,"in_stock":false,"tags":["미니멀","실용","친환경","정리"],"created_at":"2025-12-31T07:44:09Z","updated_at":"2026-01-23T07:44:09Z"}
+{"index":{"_index":"products","_id":"P-00019"}}
+{"product_id":"P-00019","name":"UrbanStep 실속형 데일리 백팩","description":"여행에 잘 어울리는 패션 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"패션","brand":"UrbanStep","price":174500,"rating":2.9,"review_count":140,"in_stock":false,"tags":["선물","베이직","사계절","가벼운 착용감"],"created_at":"2025-09-25T19:42:42Z","updated_at":"2025-09-26T19:42:42Z"}
+{"index":{"_index":"products","_id":"P-00020"}}
+{"product_id":"P-00020","name":"ActiveLine 실속형 러닝 벨트","description":"등산에 잘 어울리는 스포츠 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"스포츠","brand":"ActiveLine","price":172100,"rating":3.4,"review_count":497,"in_stock":true,"tags":["초보자","야외"],"created_at":"2025-11-03T21:39:01Z","updated_at":"2025-11-26T21:39:01Z"}
+{"index":{"_index":"products","_id":"P-00021"}}
+{"product_id":"P-00021","name":"지식마루 실속형 여행 에세이","description":"선물에 잘 어울리는 도서 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"도서","brand":"지식마루","price":11500,"rating":3.6,"review_count":334,"in_stock":false,"tags":["국내도서","ebook"],"created_at":"2026-03-08T04:29:38Z","updated_at":"2026-03-08T04:29:38Z"}
+{"index":{"_index":"products","_id":"P-00022"}}
+{"product_id":"P-00022","name":"MildLeaf 컴팩트 세럼","description":"선물에 잘 어울리는 뷰티 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"뷰티","brand":"MildLeaf","price":39100,"rating":2.1,"review_count":122,"in_stock":true,"tags":["저자극","보습"],"created_at":"2025-09-26T02:42:51Z","updated_at":"2025-10-04T02:42:51Z"}
+{"index":{"_index":"products","_id":"P-00023"}}
+{"product_id":"P-00023","name":"그레인픽 스마트 차 선물세트","description":"아침에 잘 어울리는 식품 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"식품","brand":"그레인픽","price":7200,"rating":4.5,"review_count":101,"in_stock":true,"tags":["무설탕","건강","선물","간편식"],"created_at":"2026-07-26T23:18:47Z","updated_at":"2026-08-07T23:18:47Z"}
+{"index":{"_index":"products","_id":"P-00024"}}
+{"product_id":"P-00024","name":"냥이마켓 데일리 산책 리드줄","description":"초보 보호자에 잘 어울리는 반려동물 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"반려동물","brand":"냥이마켓","price":53100,"rating":2.6,"review_count":34,"in_stock":true,"tags":["반려묘","내구성"],"created_at":"2026-04-01T14:31:36Z","updated_at":"2026-04-09T14:31:36Z"}
+{"index":{"_index":"products","_id":"P-00025"}}
+{"product_id":"P-00025","name":"MobiCore 컴팩트 무선 이어폰","description":"재택 학습에 잘 어울리는 전자기기 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"전자기기","brand":"MobiCore","price":59400,"rating":2.6,"review_count":150,"in_stock":true,"tags":["무선","블루투스"],"created_at":"2026-03-04T12:51:45Z","updated_at":"2026-03-05T12:51:45Z"}
+{"index":{"_index":"products","_id":"P-00026"}}
+{"product_id":"P-00026","name":"LumiHome 스마트 주방 저울","description":"자취에 잘 어울리는 생활 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"생활","brand":"LumiHome","price":150100,"rating":3.5,"review_count":286,"in_stock":true,"tags":["친환경","정리"],"created_at":"2026-05-16T17:17:33Z","updated_at":"2026-06-06T17:17:33Z"}
+{"index":{"_index":"products","_id":"P-00027"}}
+{"product_id":"P-00027","name":"Dayfit 데일리 코튼 셔츠","description":"운동에 잘 어울리는 패션 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"패션","brand":"Dayfit","price":169100,"rating":3.9,"review_count":150,"in_stock":true,"tags":["데일리","가벼운 착용감","선물"],"created_at":"2026-04-30T06:28:44Z","updated_at":"2026-05-30T06:28:44Z"}
+{"index":{"_index":"products","_id":"P-00028"}}
+{"product_id":"P-00028","name":"TrailMove 데일리 러닝 벨트","description":"홈트에 잘 어울리는 스포츠 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"스포츠","brand":"TrailMove","price":243200,"rating":4.2,"review_count":247,"in_stock":true,"tags":["경량","야외","내구성","운동"],"created_at":"2025-09-12T22:11:43Z","updated_at":"2025-10-06T22:11:43Z"}
+{"index":{"_index":"products","_id":"P-00029"}}
+{"product_id":"P-00029","name":"한빛책방 컴팩트 데이터 분석 입문","description":"취미에 잘 어울리는 도서 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"도서","brand":"한빛책방","price":46600,"rating":2.5,"review_count":26,"in_stock":true,"tags":["ebook","입문"],"created_at":"2026-04-15T03:08:52Z","updated_at":"2026-04-22T03:08:52Z"}
+{"index":{"_index":"products","_id":"P-00030"}}
+{"product_id":"P-00030","name":"MildLeaf 프리미엄 수분 크림","description":"선물에 잘 어울리는 뷰티 상품입니다. 사용 편의성과 실용성을 함께 고려했습니다.","category":"뷰티","brand":"MildLeaf","price":75500,"rating":2.4,"review_count":110,"in_stock":false,"tags":["휴대용","저자극","비건"],"created_at":"2026-04-18T02:24:22Z","updated_at":"2026-05-09T02:24:22Z"}

@@ -1,0 +1,16 @@
+{
+  "dataset": "products",
+  "document_count": 10000,
+  "seed": 9502026,
+  "created_at_range": ["2025-08-27T00:00:00Z", "2026-08-26T23:59:59Z"],
+  "in_stock_true_ratio": 0.85,
+  "missing_tags_ratio": 0.03,
+  "missing_updated_at_ratio": 0.05,
+  "categories": 8,
+  "required_dashboard_questions": [
+    "전체 상품은 몇 개인가?",
+    "카테고리별 상품 수는 얼마인가?",
+    "상위 브랜드별 상품 수는 얼마인가?",
+    "가격 분포 또는 재고 상태는 어떤가?"
+  ]
+}

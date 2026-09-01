@@ -1,0 +1,43 @@
+### V1-T12-C · S32 공통 생성. GET /products로 확인하고 없을 때만 PUT한다.
+# 기존 products는 삭제하지 않는다. 이미 존재하면 mapping/count/분포를 확인한다.
+# 공통 수업 요청은 day-02/practice/lecture-requests.http를 사용한다.
+
+### 3 primary shards + 1 replica, 공통 mapping 생성
+PUT /products
+{
+  "settings": {
+    "number_of_shards": 3,
+    "number_of_replicas": 1,
+    "analysis": {
+      "analyzer": {
+        "korean_search": {
+          "type": "standard",
+          "stopwords": "_none_"
+        }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "product_id": { "type": "keyword" },
+      "name": { "type": "text", "analyzer": "korean_search", "fields": { "keyword": { "type": "keyword", "ignore_above": 256 } } },
+      "description": { "type": "text", "analyzer": "korean_search" },
+      "category": { "type": "keyword" },
+      "brand": { "type": "keyword" },
+      "price": { "type": "integer" },
+      "rating": { "type": "float" },
+      "review_count": { "type": "integer" },
+      "in_stock": { "type": "boolean" },
+      "tags": { "type": "keyword" },
+      "created_at": { "type": "date" },
+      "updated_at": { "type": "date" }
+    }
+  }
+}
+
+### mapping 확인
+GET /products/_mapping
+
+### shard 배치 확인
+GET /_cat/shards/products?v

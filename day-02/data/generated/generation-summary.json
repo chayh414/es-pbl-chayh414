@@ -1,0 +1,24 @@
+{
+  "index": "products",
+  "document_count": 10000,
+  "seed": 9502026,
+  "files": {
+    "bulk": "products-10000.ndjson",
+    "sample": "products-sample-30.ndjson"
+  },
+  "category_counts": {
+    "전자기기": 1250,
+    "생활": 1250,
+    "패션": 1250,
+    "스포츠": 1250,
+    "도서": 1250,
+    "뷰티": 1250,
+    "식품": 1250,
+    "반려동물": 1250
+  },
+  "generated_at": "deterministic-from-seed",
+  "optional_field_exceptions": {
+    "tags_missing_ratio": 0.03,
+    "updated_at_missing_ratio": 0.05
+  }
+}

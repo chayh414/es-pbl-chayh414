@@ -1,0 +1,15 @@
+# 개인 저장소 루트 requests.http에 작성한다. 아래는 구간 제목이다.
+# 자기 index/field를 정하기 전에는 실행할 요청이 없다.
+# 요청 하나만 Kibana Dev Tools Console에 복사한다.
+
+### V1-T09-P · 실제 CAT 요청, 생성 후 mapping 확인 요청
+
+### V1-T12-P · 개인 GET 존재 확인 → 없을 때만 PUT + 완전한 body → GET/mapping/shards
+
+### V1-T13-P · 개인 검색어3개, standard 직접 지정 + 실제 개인 text field 지정
+
+### V1-T14-P · 미사용 ID 확인 → create → GET → update → GET → DELETE → GET/count
+
+### V1-T16-P · 개인 count → 분류 terms → 숫자 stats → 필요 시 날짜 min/max
+
+### V1-T16-P 선택 · pipeline 정의/기존 확인 → simulate → 임시 단건 실제 적용 → GET → 본인 임시 ID만 정리
