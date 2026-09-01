@@ -60,5 +60,10 @@
 
 ## 7. 미완료·오류
 
-- 없음 또는 현재 상태: 대표 문서 3건 색인, index mapping/shard 검증 완료. `_analyze` 3개 검색어 비교 완료(item_name이 커스텀 analyzer 없이 standard를 그대로 씀을 확인). CRUD(임시 문서 생성/수정/삭제) 요청은 작성했으나 아직 미실행.
-- 다음에 할 작업: CRUD 실행 및 결과 확인, `data/pbl-data-template/` 개인 복사·설정, 최소 1,000건 생성·로컬 검증·Bulk 적재, aggregation(terms/stats) 확인, pipeline 적용 여부 최종 판단
+- 없음 또는 현재 상태: 대표 문서 3건 색인, index mapping/shard 검증 완료.
+  `_analyze` 3개 검색어(한글/한글+숫자/영문+아포스트로피+숫자)를 standard analyzer
+  직접 지정 방식과 item_name field 지정 방식으로 각각 비교한 결과, 세 입력 모두
+  토큰이 완전히 동일함을 확인 — item_name이 custom analyzer 없이 standard를
+  그대로 사용 중임을 실제로 검증함. "Levi's"는 소문자 변환되고 아포스트로피는
+  유지된 채 "501"과 별도 토큰으로 분리됨. CRUD(임시 문서 생성/수정/삭제) 요청은
+  작성했으나 아직 미실행.
