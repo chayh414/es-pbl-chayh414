@@ -1,0 +1,30 @@
+{
+  "settings": { "number_of_shards": 1, "number_of_replicas": 1 },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "item_name": {
+        "type": "text",
+        "fields": {
+          "keyword": { "type": "keyword" }
+        }
+      },
+      "category": { "type": "keyword" },
+      "brand": { "type": "keyword" },
+      "brand_tier": { "type": "keyword" },
+      "size": { "type": "keyword" },
+      "color": { "type": "keyword" },
+      "condition": { "type": "keyword" },
+      "price": { "type": "integer" },
+      "original_price": { "type": "integer" },
+      "era": { "type": "keyword" },
+      "material": { "type": "keyword" },
+      "platform": { "type": "keyword" },
+      "seller_rating": { "type": "float" },
+      "listed_date": { "type": "date" },
+      "sold": { "type": "boolean" },
+      "description": { "type": "text" },
+      "defects": { "type": "text" }
+    }
+  }
+}
