@@ -100,3 +100,96 @@ POST /vintage-items/_doc/3
 
 ### V1-T12-P · 색인 확인
 GET /vintage-items/_search
+
+### V1-T13-P · 검색어1 "빈티지 데님 자켓" — standard 직접 지정
+GET /_analyze
+{
+  "analyzer": "standard",
+  "text": "빈티지 데님 자켓"
+}
+
+### V1-T13-P · 검색어1 "빈티지 데님 자켓" — item_name field 지정
+GET /vintage-items/_analyze
+{
+  "field": "item_name",
+  "text": "빈티지 데님 자켓"
+}
+
+### V1-T13-P · 검색어2 "리바이스501" — standard 직접 지정
+GET /_analyze
+{
+  "analyzer": "standard",
+  "text": "리바이스501"
+}
+
+### V1-T13-P · 검색어2 "리바이스501" — item_name field 지정
+GET /vintage-items/_analyze
+{
+  "field": "item_name",
+  "text": "리바이스501"
+}
+
+### V1-T13-P · 검색어3 "Levi's 501" — standard 직접 지정
+GET /_analyze
+{
+  "analyzer": "standard",
+  "text": "Levi's 501"
+}
+
+### V1-T13-P · 검색어3 "Levi's 501" — item_name field 지정
+GET /vintage-items/_analyze
+{
+  "field": "item_name",
+  "text": "Levi's 501"
+}
+
+### V1-T14-P · 1. 임시 ID(999) 미사용 확인
+GET /vintage-items/_doc/999
+
+### V1-T14-P · 2. 생성 (create)
+PUT /vintage-items/_doc/999
+{
+  "item_name": "테스트용 임시 자켓",
+  "category": "아우터",
+  "brand": "TestBrand",
+  "brand_tier": "일반",
+  "size": "L",
+  "color": "블랙",
+  "condition": "B급",
+  "price": 15000,
+  "original_price": 30000,
+  "era": "2000s",
+  "material": "폴리에스터",
+  "platform": "당근마켓",
+  "seller_rating": 4.0,
+  "listed_date": "2026-09-01",
+  "sold": false,
+  "description": "CRUD 실습용 임시 문서",
+  "defects": ""
+}
+
+### V1-T14-P · 3. 조회 (read)
+GET /vintage-items/_doc/999
+
+### V1-T14-P · 4. 수정 (update) — price만 변경
+POST /vintage-items/_update/999
+{
+  "doc": {
+    "price": 12000
+  }
+}
+
+### V1-T14-P · 5. 재조회 (수정 결과 확인)
+GET /vintage-items/_doc/999
+
+### V1-T14-P · 6. 삭제 (delete)
+DELETE /vintage-items/_doc/999
+
+### V1-T14-P · 7. 삭제 후 재조회 (found:false 확인)
+GET /vintage-items/_doc/999
+
+### V1-T14-P · 8. 선택 — 이미 지운 ID 재삭제 (not_found 관찰)
+DELETE /vintage-items/_doc/999
+
+### V1-T14-P · 전체 count 확인 (대표3건만 남아있어야 함)
+GET /vintage-items/_count
