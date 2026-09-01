@@ -31,6 +31,78 @@ PowerShell 작업 폴더는 개인 저장소의 data/pbl-data-template다. 이 �
 
 MissingRatio와 TrueRatio는0~1이다. weighted_choice는 음수 가중치를 사용하지 않고 합계가0보다 커야 한다. template가 참조하는 field는 앞에서 생성되어야 하며 결측이 없어야 한다. 모든 생성 field는 mapping에 있어야 한다. title을 만들기 위한 adjective도 source에 남으므로 mapping에 정의하거나 그 field를 사용하지 않는 규칙으로 바꾼다.
 
+### 3.1 Kind별 의미와 작성 방법
+
+`FieldRules`의 `Kind`는 각 field의 값을 어떤 방법으로 생성할지 정한다. `Name`은 실제 JSON field 이름이며 개인 mapping의 field 이름과 정확히 같아야 한다.
+
+| Kind | 생성하는 값 | 필수·주요 설정 | 생성 결과 예 |
+|---|---|---|---|
+| `id` | 순번을 사용한 고유 문자열 ID | `Digits`; 접두사는 전역 `IdPrefix` 사용 | `P-00001` |
+| `choice` | 후보 목록에서 무작위로 선택한 값 1개 | `Source` | `전자기기` |
+| `weighted_choice` | 가중치에 따라 선택한 값 1개 | `Values` 안의 `Value`, `Weight` | `대출 가능` |
+| `integer` | 최솟값 이상 최댓값 이하의 정수 | `Min`, `Max` | `89000` |
+| `decimal` | 범위 안에서 생성해 지정 자릿수로 반올림한 소수 | `Min`, `Max`, 선택 `Digits`(기본 2) | `4.6` |
+| `date` | 시작과 종료 사이의 UTC 날짜·시각 문자열 | `Start`, `End` | `2026-07-15T10:20:30Z` |
+| `boolean` | 지정 확률에 따른 실제 `true` 또는 `false` | `TrueRatio` | `true` |
+| `tags` | 후보에서 중복 없이 여러 값을 고른 배열 | `Source`, `MinItems`, `MaxItems` | `["무선", "추천"]` |
+| `template` | 앞에서 생성한 field와 순번을 조합한 문자열 | `Template` | `전자기기 추천 상품 1` |
+
+주요 설정값의 의미는 다음과 같다.
+
+| 설정값 | 의미와 작성 기준 |
+|---|---|
+| `Name` | 생성할 JSON field 이름. mapping의 `properties`에 같은 이름이 있어야 한다. |
+| `Kind` | 위 표의 값 생성 방식 중 하나다. |
+| `Source` | `Vocabularies`에서 사용할 후보 목록의 이름이다. |
+| `Values` | `weighted_choice`의 값과 가중치 목록이다. |
+| `Weight` | 해당 값의 상대 선택 가중치다. 음수는 사용할 수 없고 전체 합은 0보다 커야 한다. |
+| `Min`, `Max` | 숫자 생성 범위다. `integer`에서는 양끝값을 포함한다. |
+| `Digits` | `id`에서는 순번의 자릿수, `decimal`에서는 소수 자릿수다. |
+| `Start`, `End` | `date`가 생성될 수 있는 시작·종료 ISO 날짜·시각이다. |
+| `TrueRatio` | `boolean` 값이 `true`가 될 확률이다. 0~1 사이로 쓴다. |
+| `MinItems`, `MaxItems` | `tags` 배열에 넣을 최소·최대 항목 수다. 후보 수를 넘을 수 없다. |
+| `Template` | `{{field_name}}`과 `{{sequence}}`을 조합하는 문자열 서식이다. 참조 field는 이 규칙보다 앞에서 생성되어야 한다. |
+| `MissingRatio` | 해당 field를 문서에서 생략할 확률이다. 0~1 사이로 쓰며 ID에는 사용할 수 없다. |
+
+예를 들어 다음 규칙은 `categories` 후보 중 하나를 `category` 값으로 만든다.
+
+```powershell
+$Vocabularies = [ordered]@{
+  categories = @('전자기기', '생활용품', '패션')
+}
+
+@{ Name = 'category'; Kind = 'choice'; Source = 'categories' }
+```
+
+다음 규칙은 10000 이상 500000 이하의 정수 가격을 만든다.
+
+```powershell
+@{ Name = 'price'; Kind = 'integer'; Min = 10000; Max = 500000 }
+```
+
+다음 규칙은 문서마다 약 75% 확률로 `true`를 만든다. 1000건 중 정확히 750건을 보장하는 설정은 아니다.
+
+```powershell
+@{ Name = 'in_stock'; Kind = 'boolean'; TrueRatio = 0.75 }
+```
+
+다음 규칙은 앞에서 생성된 `category`와 현재 순번을 조합한다. `category` 규칙이 반드시 `prd_nm` 규칙보다 먼저 있어야 한다.
+
+```powershell
+@{ Name = 'prd_nm'; Kind = 'template'; Template = '{{category}} 추천 상품 {{sequence}}' }
+```
+
+`choice`와 `weighted_choice`는 다르다. `choice`는 후보를 같은 방식으로 무작위 선택하고, `weighted_choice`는 각 값에 부여한 상대 가중치를 반영한다.
+
+```powershell
+@{ Name = 'status'; Kind = 'weighted_choice'; Values = @(
+    @{ Value = '판매 중'; Weight = 80 },
+    @{ Value = '판매 중지'; Weight = 20 }
+  ) }
+```
+
+`Weight=80`, `Weight=20`은 장기적으로 약 80:20 비율을 기대하는 상대 가중치다. 생성 건수가 적으면 실제 비율은 달라질 수 있다.
+
 ## 4. 주제별 작성 대응 예
 
 예시 이름을 그대로 강제하지 않는다. 본인 S33 mapping이 기준이며 생성 설정과 검증 field를 같은 이름으로 고친다.
