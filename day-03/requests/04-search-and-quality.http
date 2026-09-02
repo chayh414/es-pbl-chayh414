@@ -1,0 +1,319 @@
+### P01-기본: 전체 문서 5건과 응답 구조
+GET /products/_search
+{
+  "size": 5,
+  "query": { "match_all": {} }
+}
+
+### P01-변형: 반환 field 축소
+GET /products/_search
+{
+  "size": 3,
+  "_source": ["product_id", "name", "price", "in_stock"],
+  "query": { "match_all": {} }
+}
+
+### P01-반례: 존재하지 않는 index 경로 관찰(실행 후 원래 경로로 복구)
+GET /day03-index-name-check/_search
+{
+  "size": 1,
+  "query": { "match_all": {} }
+}
+
+### P02-기본: keyword 정확 조건
+GET /products/_search
+{
+  "size": 5,
+  "query": { "term": { "category": "전자기기" } }
+}
+
+### P02-기본: text 전문 검색
+GET /products/_search
+{
+  "size": 5,
+  "query": { "match": { "name": "무선" } }
+}
+
+### P02-변형: text에 term을 사용해 match와 비교
+GET /products/_search
+{
+  "size": 5,
+  "query": { "term": { "name": "무선" } }
+}
+
+### P03-기본: 여러 text field 검색
+GET /products/_search
+{
+  "size": 5,
+  "query": {
+    "multi_match": {
+      "query": "무선 이어폰",
+      "fields": ["name", "description"]
+    }
+  }
+}
+
+### P03-변형: name boost 적용
+GET /products/_search
+{
+  "size": 5,
+  "query": {
+    "multi_match": {
+      "query": "무선 이어폰",
+      "fields": ["name^3", "description"]
+    }
+  }
+}
+
+### P03-반례/비교: phrase 의도 확인
+GET /products/_search
+{
+  "size": 5,
+  "query": {
+    "match_phrase": {
+      "name": {
+        "query": "무선 이어폰",
+        "slop": 0
+      }
+    }
+  }
+}
+
+### P04-기본: 정확 조건 filter 3개
+GET /products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "category": "전자기기" } },
+        { "term": { "in_stock": true } },
+        { "range": { "price": { "gte": 50000, "lte": 200000 } } }
+      ]
+    }
+  }
+}
+
+### P04-변형: 경계 제외 gt/lt
+GET /products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "category": "전자기기" } },
+        { "range": { "price": { "gt": 50000, "lt": 200000 } } }
+      ]
+    }
+  }
+}
+
+### P04-경계 확인: 최소·최대 값 후보 조회
+GET /products/_search
+{
+  "size": 20,
+  "_source": ["product_id", "name", "price"],
+  "query": {
+    "bool": {
+      "filter": [
+        { "terms": { "price": [50000, 200000] } }
+      ]
+    }
+  },
+  "sort": [{ "price": "asc" }]
+}
+
+### P05-기본: must와 filter 결합
+GET /products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "name": "무선" } }
+      ],
+      "filter": [
+        { "term": { "category": "전자기기" } },
+        { "term": { "in_stock": true } },
+        { "range": { "price": { "gte": 50000, "lte": 200000 } } }
+      ]
+    }
+  }
+}
+
+### P05-변형: in_stock filter 제거
+GET /products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "name": "무선" } }
+      ],
+      "filter": [
+        { "term": { "category": "전자기기" } },
+        { "range": { "price": { "gte": 50000, "lte": 200000 } } }
+      ]
+    }
+  }
+}
+
+### P05-확장: should와 minimum_should_match 비교
+GET /products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "category": "전자기기" } }
+      ],
+      "should": [
+        { "match": { "name": "무선" } },
+        { "term": { "in_stock": true } }
+      ],
+      "minimum_should_match": 1
+    }
+  }
+}
+
+### P06-기본: 1차·2차 정렬
+GET /products/_search
+{
+  "size": 10,
+  "_source": ["product_id", "name", "price", "rating", "in_stock"],
+  "query": { "match": { "name": "무선" } },
+  "sort": [
+    { "rating": "desc" },
+    { "price": "asc" }
+  ]
+}
+
+### P06-변형: 정렬 우선순위 교환
+GET /products/_search
+{
+  "size": 10,
+  "_source": ["product_id", "name", "price", "rating", "in_stock"],
+  "query": { "match": { "name": "무선" } },
+  "sort": [
+    { "price": "asc" },
+    { "rating": "desc" }
+  ]
+}
+
+### P06-표현: highlight와 _source
+GET /products/_search
+{
+  "size": 5,
+  "_source": ["product_id", "name", "description", "price", "rating", "in_stock"],
+  "query": {
+    "multi_match": {
+      "query": "무선 이어폰",
+      "fields": ["name^3", "description"]
+    }
+  },
+  "highlight": {
+    "fields": {
+      "name": {},
+      "description": {
+        "fragment_size": 120,
+        "number_of_fragments": 2
+      }
+    }
+  }
+}
+
+### P07-Q01: 전문 검색 품질
+GET /products/_search
+{
+  "size": 10,
+  "query": {
+    "multi_match": {
+      "query": "무선 이어폰",
+      "fields": ["name^3", "description"]
+    }
+  }
+}
+
+### P07-Q02: 정확 조건 품질
+GET /products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "category": "전자기기" } },
+        { "term": { "in_stock": true } }
+      ]
+    }
+  }
+}
+
+### P07-Q03: 의도한 0건
+GET /products/_search
+{
+  "size": 5,
+  "query": {
+    "term": {
+      "product_id": "__DAY03_INTENTIONAL_ZERO__"
+    }
+  }
+}
+
+### P08-개선 전: boost 없음
+GET /products/_search
+{
+  "size": 5,
+  "query": {
+    "multi_match": {
+      "query": "무선 이어폰",
+      "fields": ["name", "description"]
+    }
+  }
+}
+
+### P08-개선 후: name boost 가설
+GET /products/_search
+{
+  "size": 5,
+  "query": {
+    "multi_match": {
+      "query": "무선 이어폰",
+      "fields": ["name^3", "description"]
+    }
+  }
+}
+
+### P08-최종 통합: 검색·filter·정렬·표시
+GET /products/_search
+{
+  "size": 10,
+  "_source": ["product_id", "name", "description", "category", "price", "rating", "in_stock"],
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "multi_match": {
+            "query": "무선 이어폰",
+            "fields": ["name^3", "description"]
+          }
+        }
+      ],
+      "filter": [
+        { "term": { "category": "전자기기" } },
+        { "term": { "in_stock": true } },
+        { "range": { "price": { "gte": 50000, "lte": 200000 } } }
+      ]
+    }
+  },
+  "sort": [
+    { "rating": "desc" },
+    { "price": "asc" }
+  ],
+  "highlight": {
+    "fields": {
+      "name": {},
+      "description": {}
+    }
+  }
+}
+
