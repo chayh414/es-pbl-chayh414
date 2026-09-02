@@ -1,12 +1,15 @@
 # 개인 저장소 루트 requests.http. 요청 하나씩 Kibana Dev Tools Console에 복사해서 실행한다.
 
-### V1-T12-P · 개인 index 생성 (최초 생성, GET 존재 확인 생략하고 바로 PUT)
+### V1-T12-P · 개인 index 생성 (item_id field 추가로 재생성)
+DELETE /vintage-items
+
 PUT /vintage-items
 {
   "settings": { "number_of_shards": 1, "number_of_replicas": 1 },
   "mappings": {
     "dynamic": "strict",
     "properties": {
+      "item_id": { "type": "keyword" },
       "item_name": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
       "category": { "type": "keyword" },
       "brand": { "type": "keyword" },
@@ -34,9 +37,10 @@ GET /vintage-items/_mapping
 ### V1-T12-P · shard 상태 확인 (primary/replica 배치)
 GET /_cat/shards/vintage-items?v
 
-### V1-T12-P · 대표 문서 3건 색인
-POST /vintage-items/_doc/1
+### V1-T12-P · 대표 문서 3건 색인 (item_id를 _id로 사용)
+PUT /vintage-items/_doc/VI-00001
 {
+  "item_id": "VI-00001",
   "item_name": "리바이스 505 빈티지 데님 자켓",
   "category": "아우터",
   "brand": "Levi's",
@@ -56,8 +60,9 @@ POST /vintage-items/_doc/1
   "defects": ""
 }
 
-POST /vintage-items/_doc/2
+PUT /vintage-items/_doc/VI-00002
 {
+  "item_id": "VI-00002",
   "item_name": "칼하트 더블니 워크팬츠",
   "category": "하의",
   "brand": "Carhartt",
@@ -77,8 +82,9 @@ POST /vintage-items/_doc/2
   "defects": "무릎 부분 미세한 얼룩 있음, 밑단 보풀 약간"
 }
 
-POST /vintage-items/_doc/3
+PUT /vintage-items/_doc/VI-00003
 {
+  "item_id": "VI-00003",
   "item_name": "산산기어 도킹 자켓 라임",
   "category": "아우터",
   "brand": "SANSAN GEAR",
@@ -193,3 +199,37 @@ DELETE /vintage-items/_doc/999
 
 ### V1-T14-P · 전체 count 확인 (대표3건만 남아있어야 함)
 GET /vintage-items/_count
+
+### V1-T15-P · 대량 데이터 적재 후 전체 count 확인 (5,000건)
+GET /vintage-items/_count
+
+### V1-T16-P · 분류 field terms 집계 (category/condition/era)
+GET /vintage-items/_search
+{
+  "size": 0,
+  "aggs": {
+    "by_category": { "terms": { "field": "category", "size": 20 } },
+    "by_condition": { "terms": { "field": "condition", "size": 20 } },
+    "by_era": { "terms": { "field": "era", "size": 20 } }
+  }
+}
+
+### V1-T16-P · 숫자 field stats 집계 (price/seller_rating)
+GET /vintage-items/_search
+{
+  "size": 0,
+  "aggs": {
+    "price_stats": { "stats": { "field": "price" } },
+    "rating_stats": { "stats": { "field": "seller_rating" } }
+  }
+}
+
+### V1-T16-P · 날짜 범위 확인 (listed_date) + sold 비율
+GET /vintage-items/_search
+{
+  "size": 0,
+  "aggs": {
+    "listed_date_range": { "stats": { "field": "listed_date" } },
+    "sold_true": { "filter": { "term": { "sold": true } } }
+  }
+}

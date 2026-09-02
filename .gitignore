@@ -5,3 +5,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 *_AUDIT_*.md
+
+# 개인 대량 생성 데이터 (표본 30건·요약은 포함, 전체 Bulk 파일만 제외)
+data/pbl-data-template/generated/vintage-items-5000.ndjson

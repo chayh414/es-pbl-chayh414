@@ -1,5 +1,6 @@
 [
   {
+    "item_id": "VI-00001",
     "item_name": "리바이스 505 빈티지 데님 자켓",
     "category": "아우터",
     "brand": "Levi's",
@@ -19,6 +20,7 @@
     "defects": ""
   },
   {
+    "item_id": "VI-00002",
     "item_name": "칼하트 더블니 워크팬츠",
     "category": "하의",
     "brand": "Carhartt",
@@ -38,6 +40,7 @@
     "defects": "무릎 부분 미세한 얼룩 있음, 밑단 보풀 약간"
   },
   {
+    "item_id": "VI-00003",
     "item_name": "산산기어 도킹 자켓 라임",
     "category": "아우터",
     "brand": "SANSAN GEAR",

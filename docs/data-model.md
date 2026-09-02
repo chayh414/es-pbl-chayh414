@@ -2,8 +2,8 @@
 
 - 개인 index 이름: vintage-items
 - 검색 결과 한 줄 / 문서 한 건의 의미: 중고(빈티지·세컨핸드) 의류 상품 1건
-- 업무 ID field / 예시 값: 별도 필드 없음, _id를 업무 ID로 그대로 사용 (예: _id=1)
-- ES _id와 업무 ID 관계: item_id 같은 별도 필드를 두지 않고, ES가 자동 부여하거나 색인 시 지정한 _id 값을 업무 ID로 그대로 사용함
+- 업무 ID field / 예시 값: item_id / VI-00001
+- ES _id와 업무 ID 관계: item_id를 ES의 _id와 동일한 값으로 사용하며, 색인 시 item_id 값을 그대로 _id로 지정함 (생성기가 IdField로 item_id를 사용, 형식 `VI-00001`)
 
 ## 2. 질문 3가지
 
@@ -17,6 +17,7 @@
 
 | field | 예시 값 | 검색/필터/정렬/표시/집계 | type | 질문 번호 | 선택 이유 |
 |---|---|---|---|---|---|
+| item_id | "VI-00001" | 업무 ID (_id와 동일) | keyword | - | 문서 식별자, 생성기 IdField로 사용 |
 | item_name | "리바이스 505 빈티지 데님 자켓" | 검색, 표시 | text | Q1 | 자유 검색어로 상품명 매칭 필요 |
 | category | "아우터" | 필터, 집계 | keyword | Q1 | 정해진 값 중 정확히 일치해야 함 |
 | brand | "Levi's" | 필터, 표시 | keyword | Q1,Q2 | 브랜드명 정확 매칭/집계 |
@@ -44,6 +45,7 @@
 
 ```json
 {
+  "item_id": "VI-00001",
   "item_name": "리바이스 505 빈티지 데님 자켓",
   "category": "아우터",
   "brand": "Levi's",

@@ -3,6 +3,7 @@
   "mappings": {
     "dynamic": "strict",
     "properties": {
+      "item_id": { "type": "keyword" },
       "item_name": {
         "type": "text",
         "fields": {

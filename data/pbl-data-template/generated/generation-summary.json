@@ -1,0 +1,89 @@
+{
+    "index":  "vintage-items",
+    "document_count":  5000,
+    "seed":  20260902,
+    "id_field":  "item_id",
+    "files":  {
+                  "bulk":  "vintage-items-5000.ndjson",
+                  "sample":  "vintage-items-sample-30.ndjson"
+              },
+    "field_kinds":  [
+                        {
+                            "name":  "item_id",
+                            "kind":  "id"
+                        },
+                        {
+                            "name":  "category",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "brand",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "brand_tier",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "size",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "color",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "condition",
+                            "kind":  "weighted_choice"
+                        },
+                        {
+                            "name":  "price",
+                            "kind":  "integer"
+                        },
+                        {
+                            "name":  "original_price",
+                            "kind":  "integer"
+                        },
+                        {
+                            "name":  "era",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "material",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "platform",
+                            "kind":  "choice"
+                        },
+                        {
+                            "name":  "seller_rating",
+                            "kind":  "decimal"
+                        },
+                        {
+                            "name":  "listed_date",
+                            "kind":  "date"
+                        },
+                        {
+                            "name":  "sold",
+                            "kind":  "boolean"
+                        },
+                        {
+                            "name":  "item_name",
+                            "kind":  "template"
+                        },
+                        {
+                            "name":  "description",
+                            "kind":  "template"
+                        },
+                        {
+                            "name":  "defects",
+                            "kind":  "weighted_choice"
+                        }
+                    ],
+    "generated_at":  "deterministic-from-seed",
+    "fixed_document_count":  3,
+    "settings_sha256":  "2EFE8E976765E60D4BB0568B85C4503FDF9C829D8E92A76433618221EE4833D8",
+    "bulk_sha256":  "F339EED33B4FF42D8AE72FE1B51AE0C90E02AA170C3E24204075D3C4E5966A87",
+    "mapping_sha256":  "3602A15ED5AE29255D3F208257D22E93A9DF1DDF775313B87F5FFE704B879208"
+}
