@@ -233,3 +233,163 @@ GET /vintage-items/_search
     "sold_true": { "filter": { "term": { "sold": true } } }
   }
 }
+
+### V1-T17-P · Day3 1교시 — 내 index 첫 Search API
+GET /vintage-items/_count
+
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": { "match_all": {} }
+}
+
+### V1-T17-P · 결과 카드 field 설계
+GET /vintage-items/_search
+{
+  "size": 5,
+  "_source": ["item_id", "item_name", "price", "condition", "brand"],
+  "query": { "match_all": {} }
+}
+
+### V1-T18-1-P · Day3 2교시 — 정확 조건 (condition)
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": { "term": { "condition": "A급" } }
+}
+
+### V1-T18-1-P · 전문 검색 (description)
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": { "match": { "description": "데님" } }
+}
+
+### V1-T18-2-P · Day3 3교시 — 여러 field 전문 검색
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": {
+    "multi_match": {
+      "query": "데님 자켓",
+      "fields": ["item_name", "description"]
+    }
+  }
+}
+
+### V1-T18-2-P · boost 적용
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": {
+    "multi_match": {
+      "query": "데님 자켓",
+      "fields": ["item_name^3", "description"]
+    }
+  }
+}
+
+### V1-T19-1-P · Day3 4교시 — 정확 조건 2개 (bool filter)
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": {
+    "bool": {
+      "filter": [
+        { "term": { "condition": "A급" } },
+        { "term": { "sold": false } }
+      ]
+    }
+  }
+}
+
+### V1-T19-1-P · 범위·경계 실험 (price 30000)
+GET /vintage-items/_search
+{
+  "size": 0,
+  "query": { "range": { "price": { "lte": 30000 } } }
+}
+
+GET /vintage-items/_search
+{
+  "size": 0,
+  "query": { "range": { "price": { "lt": 30000 } } }
+}
+
+### V1-T19-2-P · Day3 5교시 — Q1 bool 검색 (개선 전, operator 기본값 or)
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": {
+    "bool": {
+      "must": [{ "match": { "item_name": "데님 자켓" } }],
+      "filter": [
+        { "range": { "price": { "lte": 30000 } } },
+        { "terms": { "condition": ["S급", "A급"] } },
+        { "term": { "category": "아우터" } },
+        { "term": { "material": "데님" } }
+      ]
+    }
+  }
+}
+
+### V1-T20-P · Day3 6교시 — 1차·2차 정렬 (평점 높은 순, 동률이면 가격 낮은 순)
+GET /vintage-items/_search
+{
+  "size": 5,
+  "_source": ["item_id", "item_name", "brand", "price", "seller_rating"],
+  "query": { "match_all": {} },
+  "sort": [
+    { "seller_rating": "desc" },
+    { "price": "asc" }
+  ]
+}
+
+### V1-T20-P · highlight (description "데님")
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": { "match": { "description": "데님" } },
+  "highlight": { "fields": { "description": {} } }
+}
+
+### V1-T21-2-P · Day3 8교시 — Q1 bool 검색 최종본 (operator=and로 개선)
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": {
+    "bool": {
+      "must": [{ "match": { "item_name": { "query": "데님 자켓", "operator": "and" } } }],
+      "filter": [
+        { "range": { "price": { "lte": 30000 } } },
+        { "terms": { "condition": ["S급", "A급"] } },
+        { "term": { "category": "아우터" } },
+        { "term": { "material": "데님" } }
+      ]
+    }
+  }
+}
+
+### V1-T21-1-P · Q2 품질 검증 — era=90s + 1차·2차 정렬
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": { "term": { "era": "90s" } },
+  "sort": [
+    { "seller_rating": "desc" },
+    { "price": "asc" }
+  ]
+}
+
+### V1-T21-1-P · Q3 품질 검증 — 하자 언급 없는 상품만 (제외 조건)
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": {
+    "bool": {
+      "must_not": [
+        { "match": { "defects": "얼룩 보풀 마모 헐거움" } }
+      ]
+    }
+  }
+}
