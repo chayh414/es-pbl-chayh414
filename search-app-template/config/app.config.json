@@ -1,0 +1,18 @@
+{
+  "appTitle": "나의 PBL 검색 서비스",
+  "appDescription": "Elasticsearch Search API로 내 데이터를 검색합니다.",
+  "index": "products",
+  "searchPlaceholder": "상품명이나 설명을 입력하세요",
+  "exampleQueries": ["무선", "이어폰", "블루투스"],
+  "pageSize": 12,
+  "resultFields": {
+    "title": "name",
+    "description": "description",
+    "badge": "category",
+    "meta": [
+      { "label": "브랜드", "field": "brand" },
+      { "label": "가격", "field": "price", "format": "number", "suffix": "원" },
+      { "label": "평점", "field": "rating" }
+    ]
+  }
+}

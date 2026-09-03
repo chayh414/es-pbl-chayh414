@@ -1,0 +1,29 @@
+{
+  "_source": [
+    "product_id",
+    "name",
+    "description",
+    "category",
+    "brand",
+    "price",
+    "rating"
+  ],
+  "query": {
+    "multi_match": {
+      "query": "{{searchText}}",
+      "fields": ["name^3", "description"]
+    }
+  },
+  "highlight": {
+    "pre_tags": ["<mark>"],
+    "post_tags": ["</mark>"],
+    "fields": {
+      "name": {},
+      "description": {}
+    }
+  },
+  "sort": [
+    { "_score": "desc" },
+    { "rating": "desc" }
+  ]
+}
