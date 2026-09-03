@@ -72,13 +72,17 @@ GET /products/_search
 ### API와 결과 입력
 
 ```http
-
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": { "term": { "condition": "A급" } }
+}
 ```
 
-- field / type / 값:
-- 사용자 질문:
-- 상위 3개 ID와 실제 값:
-- 통과/실패와 근거:
+- field / type / 값: condition / keyword / "A급"
+- 사용자 질문: "A급 이상 상태의 옷만 보고 싶다" (Q1의 조건 중 하나)
+- 상위 3개 ID와 실제 값: VI-00001(A급), VI-00003(A급), VI-00004(A급)
+- 통과/실패와 근거: 통과. `hits.total.value`=1691로, T16에서 확인한 집계 결과(A급 1691건)와 정확히 일치한다. 반환된 문서 5건 모두 `_source.condition`이 "A급"인 것을 직접 확인했다. condition은 keyword 타입이라 "A급"이라는 문자열과 완전히 같은 문서만 걸러졌고, 전문 검색이 필요 없는 이유는 등급이 자유 텍스트가 아니라 S/A/B/C급 중 하나로 정해진 값이라 분석·형태소 분해가 의미가 없기 때문이다.
 
 ## (개인) 문제 5 — 자기 전문 검색
 
@@ -93,10 +97,14 @@ GET /products/_search
 ### API와 결과 입력
 
 ```http
-
+GET /vintage-items/_search
+{
+  "size": 5,
+  "query": { "match": { "description": "데님" } }
+}
 ```
 
-- field / type / 검색어:
-- 상위 3개 ID:
-- 관련/보류/무관과 이유:
-- 완료 판정:
+- field / type / 검색어: description / text / "데님"
+- 상위 3개 ID: VI-00001, VI-00008, VI-00028
+- 관련/보류/무관과 이유: 관련. 상위 3건 전부 `description`에 실제로 "데님"이 포함돼 있고(material="데님"인 상품들), 문제 4(정확 조건, condition="A급")와 달리 이번엔 텍스트 안에 그 단어가 들어있는지를 분석 기반으로 찾은 것이라 query 선택 이유가 다르다 — 등급처럼 정해진 값이 아니라 자유 문장 속 단어를 찾는 거라 `match`가 맞다.
+- 완료 판정: 통과
