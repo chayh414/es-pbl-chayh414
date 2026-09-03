@@ -1,0 +1,52 @@
+### D4-V01 전체 문서 수를 확인한다.
+GET /products/_count
+
+### D4-V02 공통 Dashboard 기준값을 한 번에 확인한다.
+GET /products/_search
+{
+  "size": 0,
+  "aggs": {
+    "by_category": {
+      "terms": { "field": "category", "size": 20, "order": { "_key": "asc" } }
+    },
+    "by_brand": {
+      "terms": { "field": "brand", "size": 10, "order": { "_count": "desc" } },
+      "aggs": {
+        "average_price": { "avg": { "field": "price" } }
+      }
+    },
+    "price_distribution": {
+      "histogram": { "field": "price", "interval": 50000, "min_doc_count": 0 }
+    },
+    "stock_state": {
+      "terms": { "field": "in_stock", "size": 2 }
+    },
+    "created_by_month": {
+      "date_histogram": {
+        "field": "created_at",
+        "calendar_interval": "month",
+        "min_doc_count": 0
+      }
+    }
+  }
+}
+
+### D4-V03 재고 없음 기준값을 확인한다.
+GET /products/_count
+{
+  "query": {
+    "term": { "in_stock": false }
+  }
+}
+
+### D4-V04 Dashboard의 한 category 선택값을 교차 검증한다.
+# 아래 전자기기는 수업에서 선택한 실제 category 값으로 바꿀 수 있다.
+GET /products/_count
+{
+  "query": {
+    "term": { "category": "전자기기" }
+  }
+}
+
+### D4-V05 field mapping을 확인한다.
+GET /products/_mapping
