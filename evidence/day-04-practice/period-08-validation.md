@@ -1,4 +1,4 @@
-# 8교시 연습 — 사용 시나리오·교차 검증·개선·제출
+﻿# 8교시 연습 — 사용 시나리오·교차 검증·개선·제출
 
 - 필수 권장 시간: 45분
 - 선택 도전: 필수 제출 완료 후
@@ -17,7 +17,7 @@ Dashboard 사용자가 실제로 할 행동 두 가지를 실행하세요. 각 �
 
 - 두 행동이 서로 다른 이유: 행동1은 Control(전역 필터)로 여러 패널이 동시에 좁혀지는 상호작용이고, 행동2는 한 Table 안에서 정렬 기준만 바꾸는 상호작용이라 영향 범위가 다름
 - 사용자가 멈추거나 헷갈린 지점: 행동1에서 category Control이 다른 index(products) 패널까지 전역 적용되어 "N/A"/"No results found"가 뜬 부분 — 처음엔 오류로 오해했으나 원인(값 체계가 다른 index)을 확인함
-- 캡처 파일: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-04 093852.png`
+- 캡처 파일: `../day-04/screenshots/06-category-control-applied.png`
 
 ## (개인·필수) 문제 2 — 핵심값 3개 교차 검증
 
@@ -44,7 +44,7 @@ Dashboard의 핵심값 3개를 Discover, `_count`, 또는 aggregation 요청과 
 - 수정 후 결과: 제목이 "Top 6 values of category"로 바뀌고, 실제 데이터(6개 카테고리)와 표시 개수가 일치함
 - 같은 조건 재검증 결과: 막대 6개(원피스, 아우터, 가방, 신발, 상의, 하의) 그대로 유지되며 값도 동일
 - 개선/보류/악화 판정과 근거: 개선. 실제 데이터 개수와 제목의 숫자가 일치해 사용자가 오해할 여지가 사라짐
-- 수정 전·후 캡처: 수정 전 `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-04 093404.png` (Top 9로 표시된 상태)
+- 수정 전·후 캡처: 수정 전 `../day-04/screenshots/05-all-panels.png` (Top 9로 표시된 상태)
 
 ## (개인·필수) 문제 4 — 결과 3·한계 2·필요 데이터 1과 제출
 
@@ -70,7 +70,7 @@ Dashboard의 핵심값 3개를 Discover, `_count`, 또는 aggregation 요청과 
 ### 제출 기록
 
 - Dashboard 제목: D4 개인 미션 - 빈티지마켓 - chayh414 (저장 시 이 이름 사용)
-- 전체 화면 캡처 경로: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-04 093852.png`
+- 전체 화면 캡처 경로: `../day-04/screenshots/06-category-control-applied.png`
 - JSON export 경로(선택): (미실행, 선택 사항)
 - `dashboard-plan.md` 경로: `evidence/day-04/dashboard-plan.md`
 - `dashboard-review.md` 경로: `evidence/day-04/dashboard-review.md` (미작성, 다음 작업)
@@ -98,3 +98,5 @@ PDF 메뉴가 없으면 정상입니다. 현재 수업 환경의 `More → Expor
 - GREEN: 필수 32문제의 요구 산출물, 개인 Dashboard, plan/review, 캡처, commit 완료
 - YELLOW: Dashboard는 있으나 검증·개선·commit 중 하나가 미완료
 - RED: 저장된 Dashboard 또는 제출 근거가 없음
+
+

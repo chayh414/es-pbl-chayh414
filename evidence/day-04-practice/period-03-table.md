@@ -1,4 +1,4 @@
-# 3교시 연습 — Table·Count·Average·정렬
+﻿# 3교시 연습 — Table·Count·Average·정렬
 
 - 필수 권장 시간: 40분
 - 선택 도전: 5분
@@ -26,7 +26,7 @@ Average는 `Metrics → Quick function → Average → Field: price`로 추가�
 - 표시된 행 수: 9개 (+Other 포함 시 10행)
 - 첫 3개 브랜드와 상품 수: HomeNest(537), 한끼연구소(529), 냥이마켓(527)
 - 첫 3개 브랜드의 평균 가격: HomeNest 146,979.702 / 한끼연구소 39,662.382 / 냥이마켓 112,155.598
-- 캡처 파일: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-04 090805.png` (Data view를 products로 수정 후)
+- 캡처 파일: `../day-04/screenshots/04-brand-table-fixed.png` (Data view를 products로 수정 후)
 
 ## (변형·필수) 문제 2 — 정렬 기준 하나만 바꿔 비교
 
@@ -71,7 +71,7 @@ Table의 나머지 설정을 유지하고 다음 두 정렬을 비교하세요.
 - 정렬 기준: Count of records 내림차순
 - 완료 기준: 브랜드 9개(+Other)와 각각의 상품 수·평균 가격이 표시됨
 - 실제 결과 또는 데이터 부족 상태: 실제 제작 완료. Carhartt(535건/83,928.241원)가 1위, 이어서 SANSAN GEAR(519/77,857.347), Fila(506/79,260.715), Adidas(503/78,051.245), Champion(501/78,785.784), Dickies(498/77,178.641), Wrangler(498/76,162.54), Levi's(488/80,649.477), Nike(477/78,085.537), Other(475/79,175.229) — 10개 브랜드가 460~540건대로 고르게 분포함(생성기 설정과 일치)
-- 캡처/설계 문서 경로: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-03 165156.png`
+- 캡처/설계 문서 경로: `../day-04/screenshots/03-brand-table-wrong-dataview.png`
 
 ## (선택 도전) 문제 5 — Table에 필요한 Metric 하나 추가
 
@@ -88,3 +88,5 @@ Table의 나머지 설정을 유지하고 다음 두 정렬을 비교하세요.
 - GREEN: 3열 Table, 정렬 비교, 평균 해석, 개인 Table 설계 완료
 - YELLOW: Table은 있으나 Average·정렬·label 중 하나가 미완료
 - RED: Table에 brand 행 또는 price 평균을 표시할 수 없음
+
+

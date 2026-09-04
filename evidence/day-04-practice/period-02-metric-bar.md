@@ -1,4 +1,4 @@
-# 2교시 연습 — Metric·Bar·Top values
+﻿# 2교시 연습 — Metric·Bar·Top values
 
 - 필수 권장 시간: 40분
 - 선택 도전: 5분
@@ -23,7 +23,7 @@
 - 시간 범위: Last 2 years
 - KQL/filter/control 상태: 없음 (깨끗한 상태)
 - 정상/보류/오류와 이유: 정상. 기대한 20,000과 정확히 일치
-- 캡처 파일:
+- 캡처 파일: `../day-04/screenshots/05-all-panels.png`
 
 ## (공통·필수) 문제 2 — category Bar 제작
 
@@ -43,7 +43,7 @@
 - Number of values: 8
 - 표시된 category 수: 8개 (도서, 반려동물, 뷰티, 생활, 스포츠, 식품, 전자기기, 패션)
 - 각 category 값이 공통 기준과 일치하는가: 예. 8개 막대 모두 눈으로 봐도 2,500 근처로 균등하며, ES에서 확인한 공통 기준(각 2,500건)과 일치
-- 캡처 파일:
+- 캡처 파일: `../day-04/screenshots/05-all-panels.png`
 
 ## (변형·필수) 문제 3 — Bar 방향 한 가지만 바꿔 비교
 
@@ -95,10 +95,11 @@ Bar에 `스포츠` 등 하나의 category만 보인다고 가정합니다. Dashb
 - 예상 사용자 판단: 어떤 카테고리 상품이 가장 많이 등록돼 있는지 파악해 재고·마케팅 우선순위를 정할 수 있음
 - 실제 제작 여부: 실제 제작함 (Metric+Bar 둘 다 완성)
 - 부족한 경우 필요한 field와 예시값: 해당 없음 (필요한 field 이미 존재)
-- 캡처 또는 설계 문서 경로: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-03 164221.png`
+- 캡처 또는 설계 문서 경로: `../day-04/screenshots/02-vintage-metric-bar.png`
 
 ## 교시 완료 신호
 
 - GREEN: Metric 20,000, category Bar 8개, 제목 2개, 비교·복구 기록 완료
 - YELLOW: 패널은 있으나 값·Top N·제목 중 하나가 다름
 - RED: Lens 저장 또는 Dashboard 복귀 불가
+

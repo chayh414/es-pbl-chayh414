@@ -1,4 +1,4 @@
-# 7교시 연습 — 개인 목적형 Dashboard 제작
+﻿# 7교시 연습 — 개인 목적형 Dashboard 제작
 
 - 필수 권장 시간: 43분
 - 선택 도전: 2분
@@ -15,7 +15,7 @@
 - 사용한 복제 방법: 해당 없음 (Duplicate 대신 한 Dashboard에서 Data view만 바꿔가며 개인 패널을 추가 제작)
 - 상단 제목이 개인본으로 바뀌었는가: 아직 미저장 상태라 해당 없음
 - Dashboard 목록에 원본과 개인본이 모두 있는가: 아니오 — 공통 원본을 별도로 저장하지 않았음. 제출 전 공통 6패널 Dashboard를 별도로 완성·저장해야 함 (남은 작업으로 기록)
-- 캡처 파일: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-04 093404.png`
+- 캡처 파일: `../day-04/screenshots/05-all-panels.png`
 
 ## (개인·필수) 문제 2 — 청사진대로 서로 다른 패널 4개 제작
 
@@ -46,7 +46,7 @@
 - 가장 중요한 패널: 카테고리별 평균 가격 (Q2) — 운영자가 프라이싱 전략을 결정할 때 가장 직접적으로 참고하는 값이라서
 - 가장 크게 배치한 이유: 카테고리별 평균 가격 Bar를 가장 넓게 배치함 — 카테고리 6개 이름과 값이 겹치지 않고 한눈에 비교되도록
 - 잘림·겹침을 수정한 패널: brand Table의 "평균 가격" 열 숫자가 소수점까지 길게 나와 살짝 좁아 보였는데, 열 너비를 넓혀 잘림 없이 확인
-- 수정 후 전체 화면 캡처: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-04 093404.png` (제목 수정 전 상태, 수정 후 캡처는 회원님이 추가로 저장)
+- 수정 후 전체 화면 캡처: `../day-04/screenshots/05-all-panels.png` (제목 수정 전 상태, 수정 후 캡처는 회원님이 추가로 저장)
 
 ## (개인·필수) 문제 4 — 개인 질문용 Control 또는 Filter
 
@@ -62,7 +62,7 @@
 - 예상 밖 발견: 공통 `products` 패널(전체 상품 수 Metric, brand Table)이 "N/A"/"No results found"로 깨짐 — products의 category 값 체계(전자기기/생활/패션 등)에는 "아우터"가 없어서, 같은 field 이름(`category`)을 쓰는 다른 index 패널까지 이 Control이 전역 적용되며 생긴 부작용. 한 Dashboard에 서로 다른 index/값 체계 패널을 섞어두면 Control이 의도치 않게 다른 패널을 깨뜨릴 수 있음을 확인
 - 해제 방법: Control에서 "Any"(전체) 다시 선택
 - 해제 후 복구값: 전체 상품 수 20,000, 내 등록 상품 수 5,000 — 정상 복구 확인
-- 캡처 파일: `C:\Users\kopo135\Pictures\Screenshots\스크린샷 2026-09-04 093852.png`
+- 캡처 파일: `../day-04/screenshots/06-category-control-applied.png`
 
 ## (선택 도전) 문제 5 — 확장 차트 하나의 필요성 심사
 
@@ -83,3 +83,5 @@ Gauge, Heatmap, Treemap, Tag cloud 중 하나가 자신의 질문에 정말 필�
 - GREEN: 개인본, 4패널, 의미 있는 제목·배치, 상호작용 1개 완료
 - YELLOW: 3패널 또는 상호작용 검증 미완료
 - RED: 개인 Dashboard 복제나 저장 불가
+
+

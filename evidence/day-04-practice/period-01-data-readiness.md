@@ -1,4 +1,4 @@
-# 1교시 연습 — Data View·Discover·KQL·데이터 준비 상태
+﻿# 1교시 연습 — Data View·Discover·KQL·데이터 준비 상태
 
 - 필수 권장 시간: 38분
 - 선택 도전: 7분
@@ -76,7 +76,7 @@ in_stock : false
 - 수정한 내용: 시간 범위를 `Last 2 years`로 확장 (`Search entire time range` 버튼으로도 동일하게 해결 가능)
 - 수정 후 문서 수: 20,000
 - 다음부터 먼저 확인할 항목: 시간 범위 — 0건이나 예상보다 적은 결과가 보이면 index 삭제를 의심하기 전에 항상 시간 범위부터 확인한다
-- 캡처 파일: (회원님 로컬 스크린샷 경로로 채워주세요, 이미 주신 `C:\Users\kopo135\Pictures\Screenshots\1.png`가 "0건" 상태 캡처에 해당)
+- 캡처 파일: (회원님 로컬 스크린샷 경로로 채워주세요, 이미 주신 `../day-04/screenshots/01-discover-0hits.png`가 "0건" 상태 캡처에 해당)
 
 ## (개인·필수) 문제 4 — 내 데이터 준비 상태 카드
 
@@ -112,3 +112,4 @@ in_stock : false
 - GREEN: 필수 1~4 완료, 마지막 상태 20,000, KQL/filter 없음
 - YELLOW: 결과는 있으나 수치·시간·field 중 하나가 다름
 - RED: Data View 또는 Discover에서 데이터를 확인할 수 없음
+
