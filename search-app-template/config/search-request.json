@@ -1,29 +1,30 @@
 {
   "_source": [
-    "product_id",
-    "name",
+    "item_id",
+    "item_name",
     "description",
     "category",
     "brand",
     "price",
-    "rating"
+    "condition",
+    "seller_rating"
   ],
   "query": {
     "multi_match": {
       "query": "{{searchText}}",
-      "fields": ["name^3", "description"]
+      "fields": ["item_name^3", "description"]
     }
   },
   "highlight": {
     "pre_tags": ["<mark>"],
     "post_tags": ["</mark>"],
     "fields": {
-      "name": {},
+      "item_name": {},
       "description": {}
     }
   },
   "sort": [
     { "_score": "desc" },
-    { "rating": "desc" }
+    { "seller_rating": "desc" }
   ]
 }
